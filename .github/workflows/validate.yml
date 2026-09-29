@@ -1,0 +1,26 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  html:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check repository structure
+        shell: bash
+        run: |
+          test -s index.html
+          grep -q '<!DOCTYPE html>' index.html
+          grep -q '<html lang="zh-CN">' index.html
+          grep -q '<meta name="description"' index.html
+          if grep -Eqi '(api[_-]?key|client[_-]?secret|BEGIN (RSA|OPENSSH) PRIVATE KEY)' index.html; then
+            echo 'Potential secret-like content found in index.html'
+            exit 1
+          fi
