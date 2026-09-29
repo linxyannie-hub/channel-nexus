@@ -1,5 +1,7 @@
 * text=auto
 *.html text eol=lf
+# The single-file UI is a deployable demo asset; exclude it from repository language stats.
+index.html linguist-detectable=false
 *.md text eol=lf
 *.yml text eol=lf
 *.png binary

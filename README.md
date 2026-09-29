@@ -31,13 +31,15 @@
 
 ## 快速开始
 
-无需安装依赖或构建，任选一种方式运行：
+无需安装第三方依赖或构建。推荐使用仓库自带的 Python 启动器：
 
 ```bash
-# Python
-python -m http.server 8000
+python server.py
 
-# Node.js
+# 自定义端口
+python server.py --port 8080
+
+# 也可使用 Node.js
 npx serve .
 ```
 
@@ -53,7 +55,7 @@ npx serve .
 
 ## 技术与架构
 
-项目采用零构建的单文件架构：HTML、CSS、演示数据和原生 JavaScript 均位于 `index.html`。它没有后端、数据库或登录系统，也不会持久化用户输入。
+项目采用零构建的单文件前端架构：HTML、CSS、演示数据和原生 JavaScript 均位于 `index.html`；`server.py` 提供零依赖的本地预览服务。项目没有业务后端、数据库或登录系统，也不会持久化用户输入。
 
 ```text
 浏览器输入 → Brief 解析 → 硬性筛选 → 多维评分 → 推荐与对比 → 路由反馈
@@ -63,6 +65,7 @@ npx serve .
 | --- | --- |
 | 页面与样式 | 语义化 HTML + 原生 CSS |
 | 交互与评分 | 原生 JavaScript，无第三方运行时依赖 |
+| 本地预览 | Python 标准库 HTTP 服务 |
 | 数据 | 内嵌演示数据，刷新页面后重置 |
 | 部署 | GitHub Pages 自动发布 |
 
@@ -73,6 +76,7 @@ npx serve .
 ├── .github/              # CI、Pages 与协作模板
 ├── docs/                 # README 预览素材
 ├── index.html            # 完整应用入口
+├── server.py             # Python 本地预览服务
 ├── CHANGELOG.md          # 版本变更记录
 ├── CODE_OF_CONDUCT.md    # 社区行为准则
 ├── CONTRIBUTING.md       # 贡献指南

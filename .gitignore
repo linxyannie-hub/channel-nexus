@@ -6,4 +6,6 @@ Thumbs.db
 node_modules/
 dist/
 build/
+__pycache__/
+*.py[cod]
 
